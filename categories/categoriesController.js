@@ -26,9 +26,42 @@ function createCategory(title, res){
         slug: slugify(title)
 
     }).then(()=>{
-        res.redirect("/");
+        res.redirect("/admin/categories");
     });
 }
+
+router.get("/admin/categories/", (req, res)=>{
+
+    Category.findAll().then(categories =>{
+
+        res.render("admin/categories/index", {categories: categories});
+    });
+});
+
+router.post("/categories/delete", (req, res)=>{
+
+    var categoryid = req.body.id;
+
+    if(categoryid != undefined){
+
+        if(!isNaN(categoryid)){
+
+            Category.destroy({
+                where: {
+                    id: categoryid
+                }
+            }).then(()=>{
+                res.redirect('/admin/categories');
+            });
+
+        }else{//null diferente de numero
+            res.redirect('/admin/categories');
+        }
+
+    }else{//null
+        res.redirect('/admin/categories');
+    }
+});
 
 
 module.exports = router;

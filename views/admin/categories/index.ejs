@@ -1,0 +1,57 @@
+<%- include('../../partials/header.ejs')  %>
+
+<body>
+
+    <%- include('../../partials/navbar.ejs')  %>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <hr>
+                <h1>Categorias</h1>
+                <hr>
+                <a href="/admin/categories/new" class="btn btn-success mb-2">Criar nova categoria</a>
+                <table class="table table-bordered table-dark table-hover">
+                    <thead>
+                        <tr class="text-center">
+                            <th>ID</th>
+                            <th>Título</th>
+                            <th>Slug</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <% categories.forEach(category => { %>
+
+                            <tr>
+                                <th><%= category.id %></th>
+                                <th><%= category.title %></th>
+                                <th><%= category.slug %></th>
+                                <th class="text-center">
+                                    <%# Edit %>
+                                    <button style="background-color: transparent; cursor: pointer; border: none;">✏️</button>
+                                
+                                    <%# Delete %>
+                                    <form action="/categories/delete" method="POST" style="display: inline;" onsubmit="confirmarDelete(event, this)">
+                                        <input type="hidden" name="id" value="<%= category.id %>">
+                                        <input type="hidden" name="title" value="<%= category.title %>">
+                                        <button style="background-color: transparent; cursor: pointer; border: none;">❌</button>
+                                    </form>
+                                    
+                                </th>
+                            </tr>
+
+                        <% }); %>
+
+                    </tbody>
+                </table>
+                <hr>
+            </div>
+        </div>
+    </div>
+
+    <%- include('../../partials/footer.ejs')  %>
+    <%#JS PADRÃO %>
+    <script src="/js/app.js"></script>
+</body>
