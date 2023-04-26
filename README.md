@@ -9,4 +9,6 @@ npm install
 > Exercício de CRUD com NodeJS em um projeto de criação de Blog.
 
 ## Alterações 🧑‍💼
+- CRUD de categorias ✔️
+- CRUD de Artigos ⏲️
 > Em progresso...
