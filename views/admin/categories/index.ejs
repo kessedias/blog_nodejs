@@ -30,7 +30,7 @@
                                 <th><%= category.slug %></th>
                                 <th class="text-center">
                                     <%# Edit %>
-                                    <button style="background-color: transparent; cursor: pointer; border: none;">✏️</button>
+                                    <a href="/admin/categories/edit/<%= category.id %>" style="background-color: transparent; cursor: pointer; border: none;">✏️</a>
                                 
                                     <%# Delete %>
                                     <form action="/categories/delete" method="POST" style="display: inline;" onsubmit="confirmarDelete(event, this)">

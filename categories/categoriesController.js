@@ -3,10 +3,12 @@ const router = express.Router();
 const Category = require("./Category");
 const slugify = require("slugify");
 
+//Renderiza o form de criar uma categoria
 router.get("/admin/categories/new", (req, res)=>{
     res.render("admin/categories/new");
 });
 
+//Salva uma categoria
 router.post("/categories/save", (req, res)=>{
 
     var title = req.body.title;
@@ -15,7 +17,7 @@ router.post("/categories/save", (req, res)=>{
 });
 
 /**
-* Cria uma categoria
+* Função para criar uma categoria
 * @param title => titulo da categoria
 * @param res => resposta do servidor
 */
@@ -30,6 +32,7 @@ function createCategory(title, res){
     });
 }
 
+//Lista todas as categorias
 router.get("/admin/categories/", (req, res)=>{
 
     Category.findAll().then(categories =>{
@@ -38,6 +41,7 @@ router.get("/admin/categories/", (req, res)=>{
     });
 });
 
+//Deleta uma categoria
 router.post("/categories/delete", (req, res)=>{
 
     var categoryid = req.body.id;
@@ -61,6 +65,48 @@ router.post("/categories/delete", (req, res)=>{
     }else{//null
         res.redirect('/admin/categories');
     }
+});
+
+//Lista uma categoria
+router.get("/admin/categories/edit/:id", (req, res)=>{
+
+    var categoryid = req.params.id;
+
+    if(isNaN(categoryid)){
+        res.redirect("/admin/categories");
+    }
+
+    Category.findByPk(categoryid).then(category =>{
+
+        if(category != undefined){
+
+            res.render("admin/categories/edit" , {category: category})
+
+        }else{
+
+            res.redirect("/admin/categories");
+        }
+
+    }).catch(erro => {
+
+        res.redirect("/admin/categories");
+    });
+});
+
+//Atualiza uma categoria
+router.post("/categories/update", (req, res)=>{
+
+    var categoryid = req.body.id;
+    var title = req.body.title;
+
+    Category.update({title: title, slug: slugify(title)},{
+        where: {id: categoryid}
+        }
+
+    ).then(()=>{
+
+        res.redirect("/admin/categories");
+    });
 });
 
 
