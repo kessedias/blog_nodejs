@@ -1,0 +1,33 @@
+<%- include('../../partials/header.ejs')  %>
+
+<body class="background-color">
+    <%- include('../../partials/navbar.ejs')  %>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 mt-2">
+
+                <div class="card mt-1">
+
+                    <div class="card-header">
+                        <h1 class="mt-3">Criar artigo</h1>
+                    </div>
+    
+                    <form method="POST" action="/articles/save" class="card-body">
+                        <div class="form-group">
+                            <label for="articletitle">Título:</label>
+                            <input id="articletitle" class="form-control" type="text" name="title" placeholder="Insira aqui o nome do artigo">
+                            <label class="mt-2" for="articlebody">Conteúdo:</label>
+                            <textarea  class="form-control mb-1" name="body" id="articlebody" cols="30" rows="10" placeholder="Insira aqui o seu artigo"></textarea>
+
+                        </div>
+    
+                        <button type="sumit" class="btn btn-primary">Salvar</button>
+                        <a href="/admin/articles/" class="btn btn-secondary">Voltar</a>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<%- include('../../partials/footer.ejs') %>
