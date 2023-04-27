@@ -18,6 +18,16 @@
                             <input id="articletitle" class="form-control" type="text" name="title" placeholder="Insira aqui o nome do artigo">
                             <label class="mt-2" for="articlebody">Conteúdo:</label>
                             <textarea  class="form-control mb-1" name="body" id="articlebody" cols="30" rows="10" placeholder="Insira aqui o seu artigo"></textarea>
+                            <label class="mt-2" for="articlecategory">Selecione uma categoria</label>
+                            <select name="category" id="articlecategory" class="form-control">
+                                
+                                <% categories.forEach((category) => { %>
+
+                                    <option value="<%= category.id %>"><%= category.title %></option> 
+
+                                <% }); %>
+
+                            </select>
 
                         </div>
     
@@ -30,4 +40,7 @@
         </div>
     </div>
     <%- include('../../partials/footer.ejs') %>
+    <script src="/tinymce/tinymce.min.js"></script>
+    <%#JS PADRÃO %>
+    <script src="/js/app.js"></script>
 </body>
