@@ -11,4 +11,5 @@ npm install
 ## Alterações 🧑‍💼
 - CRUD de categorias ✔️
 - CRUD de Artigos ⏲️
+- Exibição do artigo
 > Em progresso...
