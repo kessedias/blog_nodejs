@@ -5,19 +5,28 @@ const Article = require("./Article");
 const slugify = require("slugify");
 
 
-//Lista novo artigo
+//Lista form de novo artigo
 router.get("/admin/articles/new", (req, res)=>{
 
     Category.findAll().then(categories =>{
 
         res.render("admin/articles/new", {categories: categories});
     });
-
 });
 
-router.get("/admin/articles/", (req, res)=>{
+//lista todos artigos
+router.get("/admin/articles", (req, res)=>{
     
-    res.render("admin/articles/index")
+    Article.findAll({
+
+        include: [{
+            model: Category,
+        }]
+
+    }).then(articles => {
+
+        res.render("admin/articles/index", {articles: articles})
+    })
 });
 
 router.post("/articles/save", (req, res)=>{
@@ -36,9 +45,6 @@ router.post("/articles/save", (req, res)=>{
         
         res.redirect('/admin/articles');
     })
-
 });
-
-
 
 module.exports = router;

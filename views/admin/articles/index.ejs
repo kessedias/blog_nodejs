@@ -7,7 +7,48 @@
     <div class="container">
         <div class="row">
             <div class="col-12 mt-2">
+                <hr>
                 <h1>Artigos</h1>
+                <hr>
+                <a href="/admin/categories/new" class="btn btn-success mb-2">Criar novo artigo</a>
+                <table class="table table-bordered table-dark table-hover">
+                    <thead>
+                        <tr class="text-center">
+                            <th>ID</th>
+                            <th>Título</th>
+                            <th>Slug</th>
+                            <th>Categoria</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% articles.forEach(article => { %>
+                            
+                            <tr class="text-center">
+                                <td><%= article.id %></td>
+                                <td><%= article.title %></td>
+                                <td><%= article.slug %></td>
+                                <td><%= article.category.title %></td>
+                                <td class="text-center">
+                                    
+                                    <%# Edit %>
+                                    <a href="/admin/articles/edit/<%= article.id %>" style="background-color: transparent; cursor: pointer; border: none;">✏️</a>
+                                
+                                    <%# Delete %>
+                                    <form action="" method="POST" style="display: inline;" onsubmit="confirmarDelete(event, this)">
+                                        <input type="hidden" name="id" value="<%= article.id %>">
+                                        <input type="hidden" name="title" value="<%= article.title %>">
+                                        <button style="background-color: transparent; cursor: pointer; border: none;">❌</button>
+                                    </form>
+                                    
+                                </td>
+                            </tr>
+
+                        <% });%>
+
+                    </tbody>
+                </table>
+                <hr>
             </div>
         </div>
     </div>

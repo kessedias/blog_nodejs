@@ -24,7 +24,8 @@
 
                         <% categories.forEach(category => { %>
 
-                            <tr>
+                            <tr class="text-center">
+
                                 <th><%= category.id %></th>
                                 <th><%= category.title %></th>
                                 <th><%= category.slug %></th>
@@ -40,6 +41,7 @@
                                     </form>
                                     
                                 </th>
+                                
                             </tr>
 
                         <% }); %>
