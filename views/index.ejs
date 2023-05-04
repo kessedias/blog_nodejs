@@ -2,12 +2,35 @@
 
 <body class="background-color">
 
-    <%- include('partials/navbar.ejs')  %>
+    <%- include('partials/navbarhome.ejs')  %>
 
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <h1 class="text-center mt-3">Boas vindas ao Node.js Blog!</h1>
+                <hr>
+                <div class="jumbotron">
+                    <h1 class="display-4">Boas vindas ao Blog Node.js!</h1>
+                    <p class="lead">Aqui você acessa as notícias quentinhas, direto do forno para a sua tela!</p>
+                    <hr class="my-4">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci sunt rem necessitatibus, cum ipsam consequatur ullam! Aut quibusdam, porro incidunt voluptate molestiae sint consectetur, iure natus dolores dolorum itaque dolorem?</p>
+                    <p class="lead">
+                        <a class="btn btn-primary btn-lg" href="#" role="button">Nosso discord</a>
+                    </p>
+                </div>
+                <hr>
+
+                <% articles.forEach(article => { %>
+                            
+                    <div class="card mt-3">
+                        <div class="card-header">
+                            <h2><%= article.title %></h2>
+                        </div>
+                        <div class="card-body">
+                            <a href="#" class="btn btn-primary">Ler artigo</a>
+                        </div>
+                    </div>
+                    <hr>
+                <% });%>
             </div>
         </div>
     </div>

@@ -29,6 +29,7 @@ router.get("/admin/articles", (req, res)=>{
     })
 });
 
+//salva um artigo
 router.post("/articles/save", (req, res)=>{
 
     var title = req.body.title;
