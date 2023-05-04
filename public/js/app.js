@@ -6,7 +6,7 @@
 function confirmarDelete(event, form) {
     event.preventDefault();
 
-    var decision = confirm('Deseja deletar a categoria ' + '"' + form.title.value + '"' + '?');
+    var decision = confirm('Deseja deletar ' + '"' + form.title.value + '"' + '?');
 
     decision ? form.submit() : false;
 }

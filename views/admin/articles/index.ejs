@@ -10,7 +10,7 @@
                 <hr>
                 <h1>Artigos</h1>
                 <hr>
-                <a href="/admin/categories/new" class="btn btn-success mb-2">Criar novo artigo</a>
+                <a href="/admin/articles/new" class="btn btn-success mb-2">Criar novo artigo</a>
                 <table class="table table-bordered table-dark table-hover">
                     <thead>
                         <tr class="text-center">
@@ -35,7 +35,7 @@
                                     <a href="/admin/articles/edit/<%= article.id %>" style="background-color: transparent; cursor: pointer; border: none;">✏️</a>
                                 
                                     <%# Delete %>
-                                    <form action="" method="POST" style="display: inline;" onsubmit="confirmarDelete(event, this)">
+                                    <form action="/articles/delete" method="POST" style="display: inline;" onsubmit="confirmarDelete(event, this)">
                                         <input type="hidden" name="id" value="<%= article.id %>">
                                         <input type="hidden" name="title" value="<%= article.title %>">
                                         <button style="background-color: transparent; cursor: pointer; border: none;">❌</button>
