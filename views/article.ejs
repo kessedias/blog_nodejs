@@ -1,0 +1,25 @@
+<%- include('partials/header.ejs')  %>
+
+<body class="background-color">
+
+    <%- include('partials/navbarhome.ejs')  %>
+
+    <div class="container mt-3 mb-3">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="text-center"><%= article.title %></h2>
+                    </div>
+                    <div class="card-body">
+                        <%- article.body %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <%- include('partials/footer.ejs')  %>
+    <%#JS PADRÃO %>
+    <script src="/js/app.js"></script>
+</body>
