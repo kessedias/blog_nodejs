@@ -10,6 +10,7 @@ npm install
 
 ## Alterações 🧑‍💼
 - CRUD de categorias ✔️
-- CRUD de Artigos ⏲️
-- Exibição do artigo
+- CRUD de Artigos ✔️
+- Exibição do artigo ✔️
+- Tela de Login 🕐
 > Em progresso...
