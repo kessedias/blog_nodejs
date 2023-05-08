@@ -26,7 +26,17 @@
                             <h2><%= article.title %></h2>
                         </div>
                         <div class="card-body">
-                            <a href="/<%= article.slug %>" class="btn btn-primary">Ler artigo</a>
+
+                            <div class="row">
+                                <div class="col-4">
+                                    <a href="/<%= article.slug %>"><img src="https://upload.wikimedia.org/wikipedia/commons/b/b6/Image_created_with_a_mobile_phone.png" class="img-thumbnail" alt="<%= article.slug %>">
+                                    </div></a>
+
+                                <a href="/<%= article.slug %>" class="col-8 link-dark">
+                                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officiis quae odit optio, eveniet incidunt odio sed atque non? Veritatis optio assumenda laboriosam mollitia at est sapiente dolor consectetur tempore quia.
+                                </a>
+                            </div>
+                        
                         </div>
                     </div>
                     <hr>
