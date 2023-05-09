@@ -12,5 +12,6 @@ npm install
 - CRUD de categorias ✔️
 - CRUD de Artigos ✔️
 - Exibição do artigo ✔️
+- Refatoração artigo 🕐
 - Tela de Login 🕐
 > Em progresso...
