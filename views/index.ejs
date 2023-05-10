@@ -8,13 +8,13 @@
         <div class="row">
             <div class="col-12">
                 <hr>
-                <div class="jumbotron">
-                    <h1 class="display-4">Boas vindas ao Blog Node.js!</h1>
+                <div class="jumbotron bg-dark" style="color: rgba(245, 245, 245, 0.857) !important">
+                    <h1 class="display-4">Boas vindas ao <span style="color: #44883e; font-weight: 400;">Blog Node.js!</span></h1>
                     <p class="lead">Aqui você acessa as notícias quentinhas, direto do forno para a sua tela!</p>
                     <hr class="my-4">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci sunt rem necessitatibus, cum ipsam consequatur ullam! Aut quibusdam, porro incidunt voluptate molestiae sint consectetur, iure natus dolores dolorum itaque dolorem?</p>
+                    <p>Agora temos também uma comunidade para te manter sempre informado das novidades que rolam por aí! Clique no link abaixo para acessar o nosso servidor no discord para se manter sempre atualizado! Encontramos você lá!</p>
                     <p class="lead">
-                        <a class="btn btn-primary btn-lg" href="#" role="button">Nosso discord</a>
+                        <a class="btn btn-lg discord" href="#" role="button">Nosso discord</a>
                     </p>
                 </div>
                 <hr>
@@ -29,7 +29,7 @@
 
                             <div class="row">
                                 <div class="col-xl-4 col-sm-12 col-md-12">
-                                    <a href="/<%= article.slug %>"><img src="https://upload.wikimedia.org/wikipedia/commons/b/b6/Image_created_with_a_mobile_phone.png" class="img-thumbnail" alt="<%= article.slug %>">
+                                    <a href="/<%= article.slug %>"><img src="/images/article.jpg" class="img-thumbnail img-fluid" alt="<%= article.slug %>">
                                     </div></a>
 
                                 <a href="/<%= article.slug %>" class="col-xl-8 link-dark col-sm-12 col-md-12">

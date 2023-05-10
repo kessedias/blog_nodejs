@@ -3,7 +3,8 @@
 ## Instalação 🔑
 
 ```sh
-npm install
+1- npm install
+2- nodemon index.js
 ```
 ## Projeto 💻
 > Exercício de CRUD com NodeJS em um projeto de criação de Blog.
@@ -17,3 +18,5 @@ npm install
 - Logout do sistema 🕐
 - Refatoração artigo 🕐
 > Em progresso...
+
+<img src="public/images/description.gif">

@@ -21,3 +21,13 @@
     bottom: 0;
     width: 100%;
 }
+
+.discord{
+    background-color: #7289DA;
+    color: whitesmoke;
+}
+
+.discord:hover{
+    background-color: #7289dad6;
+    color: white;
+}
