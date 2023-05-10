@@ -18,7 +18,7 @@ if(articlebody.length != 0){
         language: 'pt_BR',
         selector: "#articlebody",
         activeEditor: true,
-        plugins: 'lists advlist autolink link image preview searchreplace wordcount fullscreen insertdatetime save table emoticons',
+        plugins: 'lists advlist autolink link image preview searchreplace wordcount fullscreen insertdatetime save table emoticons code',
         init_instance_callback: () =>{
 
             tinymce.get("articlebody").setContent($('#content').html());
