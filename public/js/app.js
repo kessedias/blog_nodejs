@@ -17,6 +17,11 @@ if(articlebody.length != 0){
     tinymce.init({
         language: 'pt_BR',
         selector: "#articlebody",
-        plugins: 'lists advlist autolink link image preview searchreplace wordcount fullscreen insertdatetime save table emoticons'
-    });
+        activeEditor: true,
+        plugins: 'lists advlist autolink link image preview searchreplace wordcount fullscreen insertdatetime save table emoticons',
+        init_instance_callback: () =>{
+
+            tinymce.get("articlebody").setContent($('#content').html());
+        }
+    })
 }

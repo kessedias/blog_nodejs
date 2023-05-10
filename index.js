@@ -13,7 +13,7 @@ const Category = require("./categories/Category");
 //html
 app.set("view engine", "ejs");
 
-//Eixibição de artigos e categorias
+//Exibição de artigos e categorias
 app.get("/", (req, res) => {
 
     Article.findAll({
@@ -91,7 +91,9 @@ app.get("/category/:slug", (req, res)=>{
         include: [{model: Article}],
         where: {
             slug: slug
-        }
+        },
+        //Adicionando ordenação para o model de artigo que seja filtrando sempre pelo mais recente
+        order: [[Article, 'id', 'DESC']] 
 
     }).then(category => {
 
