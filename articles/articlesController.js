@@ -159,6 +159,8 @@ router.get("/admin/articles/edit/:id", (req, res)=>{
 //atualiza o artigo
 router.post("/articles/update", upload.single('image'), (req, res)=>{
 
+    //TODO Apagar imagem temporária ao atualizar para uma nova
+    //TODO validar front de extensões não aceitas e tamanho excedido
     var articleid = req.body.id;
     var title = req.body.title;
     var resume = req.body.resume;
