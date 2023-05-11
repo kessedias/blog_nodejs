@@ -3,7 +3,9 @@ const router = express.Router();
 const Category = require("../categories/Category");
 const Article = require("./Article");
 const slugify = require("slugify");
-
+const multer = require("multer");
+const fs = require("fs");
+const path = require("path");
 
 //Lista form de novo artigo
 router.get("/admin/articles/new", (req, res)=>{
@@ -29,23 +31,75 @@ router.get("/admin/articles", (req, res)=>{
     })
 });
 
-//salva um artigo
-router.post("/articles/save", (req, res)=>{
+//lógica para criar a pasta tmp
+const public = path.join(__dirname, '../public'); // caminho para a pasta "public"
+const tmp = path.join(public, 'tmp'); // caminho para a pasta "tmp" dentro da "public"
 
+if (!fs.existsSync(tmp)) { // verifica se a pasta "tmp" já existe
+
+    fs.mkdirSync(tmp); // cria a pasta "tmp" se ela não existir
+}
+
+//Seta o armazenamento e conversão
+const storage = multer.diskStorage({
+
+    destination: path.join(__dirname, "../public/tmp"), //local
+    filename: (req, file, cb) => { //tratamento da imagem
+        cb(null, `${Date.now()}--${file.originalname}`);
+    },
+});
+
+//Instancia o armazenamento e inicializa as configurações
+const upload = multer({
+    storage: storage,
+    limits: { 
+        fileSize: 10485760 //10MB 
+    },
+    fileFilter: (req, file, cb) => {
+        checkFileType(file, cb);
+    },
+});
+
+const checkFileType = function (file, cb) {
+    //extensões permitidas
+    const fileTypes = /jpeg|jpg|png|gif|svg/;
+    
+    //verificando nomes das extensões
+    const extName = fileTypes.test(path.extname(file.originalname).toLowerCase());
+    
+    const mimeType = fileTypes.test(file.mimetype);
+    
+    if (mimeType && extName) {
+
+        return cb(null, true);
+
+    } else {
+
+        cb("Você só pode utilizar arquivos de imagens!");
+    }
+};
+
+//salva um artigo
+router.post("/articles/save", upload.single('image'), (req, res)=>{
+    
     var title = req.body.title;
+    var resume = req.body.resume;
+    var filename = req.file.filename;
     var body = req.body.body;
-    var categoryid = req.body.category
+    var categoryid = req.body.category;
 
     Article.create({
         title: title,
         slug: slugify(title),
+        resume: resume,
+        image: filename,
         body: body,
         categoryId: categoryid
 
     }).then(()=>{
         
-        res.redirect('/admin/articles');
-    })
+            res.redirect('/admin/articles');
+    });
 });
 
 //Deleta um artigo
@@ -106,12 +160,14 @@ router.post("/articles/update", (req, res)=>{
 
     var articleid = req.body.id;
     var title = req.body.title;
+    var resume = req.body.resume;
     var body = req.body.body;
     var category = req.body.category;
 
     Article.update(
         {
             title: title,
+            resume: resume,
             body: body,
             categoryId: category,
             slug: slugify(title)

@@ -14,11 +14,23 @@
     
                     <form method="POST" action="/articles/update" class="card-body">
                         <div class="form-group">
+                            
                             <input type="hidden" name="id" value="<%= article.id %>">
+
                             <label for="articletitle">Título:</label>
                             <input id="articletitle" value="<%= article.title %>" class="form-control" type="text" name="title" placeholder="Insira aqui o nome do artigo">
+                            
+                            <label class="mt-2" for="articleresume">Resumo:</label>
+                            <textarea class="form-control mb-1" name="resume" id="articleresume" cols="30" rows="5" placeholder="Insira aqui resumo do seu artigo"><%= article.resume %></textarea>
+
+                            <div class="border p-2 mt-2">
+                                <label for="bg-image">Selecione uma imagem de capa:</label>
+                                <input type="file" class="form-control-file" id="bg-image" name="image">
+                            </div>
+                            
                             <label class="mt-2" for="articlebody">Conteúdo:</label>
                             <textarea  class="form-control mb-1" name="body" id="articlebody" cols="30" rows="10" placeholder="Insira aqui o seu artigo"></textarea>
+                            
                             <label class="mt-2" for="articlecategory">Selecione uma categoria</label>
                             <select name="category" id="articlecategory" class="form-control">
                                 

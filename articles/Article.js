@@ -11,6 +11,16 @@ const Article = connection.define('articles', {
         type: Sequelize.STRING,
         allowNull: false
     },
+    resume:{
+        type: Sequelize.TEXT,
+        allowNull: true
+
+    },
+    image:{
+        type: Sequelize.STRING,
+        allowNull: true
+
+    },
     body:{//nome do campo
         type: Sequelize.TEXT,//tipo do campo
         allowNull: false //obrigatório
