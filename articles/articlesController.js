@@ -31,10 +31,10 @@ router.get("/admin/articles", (req, res)=>{
     })
 });
 
-//lógica para criar a pasta tmp
 const public = path.join(__dirname, '../public'); // caminho para a pasta "public"
 const tmp = path.join(public, 'tmp'); // caminho para a pasta "tmp" dentro da "public"
 
+//lógica para criar a pasta tmp
 if (!fs.existsSync(tmp)) { // verifica se a pasta "tmp" já existe
 
     fs.mkdirSync(tmp); // cria a pasta "tmp" se ela não existir
@@ -81,7 +81,7 @@ const checkFileType = function (file, cb) {
 
 //salva um artigo
 router.post("/articles/save", upload.single('image'), (req, res)=>{
-    
+
     var title = req.body.title;
     var resume = req.body.resume;
     var filename = req.file.filename;
@@ -98,7 +98,7 @@ router.post("/articles/save", upload.single('image'), (req, res)=>{
 
     }).then(()=>{
         
-            res.redirect('/admin/articles');
+        res.redirect('/admin/articles');
     });
 });
 

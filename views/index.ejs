@@ -29,7 +29,16 @@
 
                             <div class="row">
                                 <div class="col-xl-4 col-sm-12 col-md-12">
-                                    <a href="/<%= article.slug %>"><img src="/images/article.jpg" class="img-thumbnail img-fluid" alt="<%= article.slug %>">
+                                    
+                                    <% if(article.image != null){ %>
+
+                                        <a href="/<%= article.slug %>"><img src="/tmp/<%=article.image %>" class="img-thumbnail img-fluid" alt="<%= article.slug %>">
+
+                                    <% }else{ %>
+
+                                        <a href="/<%= article.slug %>"><img src="/images/article.jpg" class="img-thumbnail img-fluid" alt="<%= article.slug %>">     
+                                    <% }%>
+                                    
                                     </div></a>
 
                                 <a href="/<%= article.slug %>" class="col-xl-8 link-dark col-sm-12 col-md-12">
