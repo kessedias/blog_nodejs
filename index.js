@@ -19,7 +19,8 @@ app.get("/", (req, res) => {
     Article.findAll({
         order: [
             ['id', 'DESC']
-        ]
+        ],
+        limit: 3
     }).then(articles => {
 
         Category.findAll().then(categories =>{
@@ -88,12 +89,14 @@ app.get("/category/:slug", (req, res)=>{
     Category.findOne({
         
         //join
-        include: [{model: Article}],
+        include: [{
+            model: Article,
+            order: [['id', 'DESC']],
+            limit: 3
+        }],
         where: {
             slug: slug
         },
-        //Adicionando ordenação para o model de artigo que seja filtrando sempre pelo mais recente
-        order: [[Article, 'id', 'DESC']] 
 
     }).then(category => {
 

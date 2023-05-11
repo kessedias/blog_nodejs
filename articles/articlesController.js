@@ -85,7 +85,7 @@ router.post("/articles/save", upload.single('image'), (req, res)=>{
 
     var title = req.body.title;
     var resume = req.body.resume;
-    var filename = req.file.filename;
+    var filename = req.file ? req.file.filename : null;
     var body = req.body.body;
     var categoryid = req.body.category;
 
@@ -190,6 +190,58 @@ router.post("/articles/update", upload.single('image'), (req, res)=>{
 
         res.redirect("/")
     })
+});
+
+//rota de paginação
+router.get("/articles/page/:num", (req, res)=>{
+
+    //definindo a paginacao
+    var page = req.params.num;
+    var offset = 0;
+    var limit = 3;
+
+    if(isNaN(page) || page == 1){
+
+        offset = 0;
+
+    }else{
+
+        offset =  (parseInt(page) -1) * limit;
+    }
+
+    //encontra com contador
+    Article.findAndCountAll({
+
+        limit: limit,
+        offset: offset,
+        order: [
+            ['id', 'DESC']
+        ],
+
+    }).then(articles =>{
+
+        var next;
+        if(offset + limit >= articles.count){
+
+            next = false;
+            
+        }else{
+            
+            next = true;
+        }
+
+        var result = {
+            page: parseInt(page),
+            next: next,
+            articles: articles
+        }
+
+        //resgatando categorias para manter o filtro na pagincao
+        Category.findAll().then(categories =>{
+
+            res.render("admin/articles/page", {result: result, categories, categories})
+        });
+    });
 });
 
 module.exports = router;

@@ -1,25 +1,13 @@
-<%- include('partials/header.ejs')  %>
+<%- include('../../partials/header.ejs')  %>
 
 <body class="background-color">
 
-    <%- include('partials/navbarhome.ejs')  %>
+    <%- include('../../partials/navbarhome.ejs')  %>
 
     <div class="container mb-5">
         <div class="row">
             <div class="col-12">
-                <hr>
-                <div class="jumbotron bg-dark" style="color: rgba(245, 245, 245, 0.857) !important">
-                    <h1 class="display-4">Boas vindas ao <span style="color: #44883e; font-weight: 400;">Blog Node.js!</span></h1>
-                    <p class="lead">Aqui você acessa as notícias quentinhas, direto do forno para a sua tela!</p>
-                    <hr class="my-4">
-                    <p>Agora temos também uma comunidade para te manter sempre informado das novidades que rolam por aí! Clique no link abaixo para acessar o nosso servidor no discord para se manter sempre atualizado! Encontramos você lá!</p>
-                    <p class="lead">
-                        <a class="btn btn-lg discord" href="#" role="button">Nosso discord</a>
-                    </p>
-                </div>
-                <hr>
-
-                <% articles.forEach(article => { %>
+                <% result.articles.rows.forEach(article => { %>
                             
                     <div class="card mt-3">
                         <div class="card-header">
@@ -56,12 +44,25 @@
         <div class="row">
             <div class="col-12 mb-5">
 
-                <a class="btn btn-dark" style="float: right" href="/articles/page/2">Página 2 →</a>
+                <% if(result.page > 2) {%>
+
+                    <a class="btn btn-dark" style="float: left;" href="/articles/page/<%= result.page - 1 %>">← Página <%= result.page - 1 %></a>
+
+                <% }else if(result.page == 2){ %>
+        
+                    <a class="btn btn-dark" style="float: left;" href="/">← Página 2</a>
+                <% } %>
+
+                <% if(result.next) {%>
+
+                    <a class="btn btn-dark" style="float: right;" href="/articles/page/<%= result.page + 1 %>">Página <%= result.page + 1 %> →</a>
+                <% } %>
             </div>
         </div>
+
     </div>
 
-    <%- include('partials/footer.ejs')  %>
+    <%- include('../../partials/footer.ejs')  %>
     <%#JS PADRÃO %>
     <script src="/js/app.js"></script>
 </body>
