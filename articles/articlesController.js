@@ -56,6 +56,7 @@ const upload = multer({
         fileSize: 10485760 //10MB 
     },
     fileFilter: (req, file, cb) => {
+
         checkFileType(file, cb);
     },
 });
@@ -156,11 +157,12 @@ router.get("/admin/articles/edit/:id", (req, res)=>{
 });
 
 //atualiza o artigo
-router.post("/articles/update", (req, res)=>{
+router.post("/articles/update", upload.single('image'), (req, res)=>{
 
     var articleid = req.body.id;
     var title = req.body.title;
     var resume = req.body.resume;
+    var filename = req.file ? req.file.filename : req.body.oldImage;
     var body = req.body.body;
     var category = req.body.category;
 
@@ -168,6 +170,7 @@ router.post("/articles/update", (req, res)=>{
         {
             title: title,
             resume: resume,
+            image: filename,
             body: body,
             categoryId: category,
             slug: slugify(title)

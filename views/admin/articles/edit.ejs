@@ -12,7 +12,7 @@
                         <h1 class="mt-3">Editar artigo</h1>
                     </div>
     
-                    <form method="POST" action="/articles/update" class="card-body">
+                    <form method="POST" action="/articles/update" class="card-body" enctype="multipart/form-data">
                         <div class="form-group">
                             
                             <input type="hidden" name="id" value="<%= article.id %>">
@@ -25,7 +25,14 @@
 
                             <div class="border p-2 mt-2">
                                 <label for="bg-image">Selecione uma imagem de capa:</label>
-                                <input type="file" class="form-control-file" id="bg-image" name="image">
+                                <input type="file" class="form-control-file" id="bg-image" name="image" <% if (article.image) { %> value="/tmp/<%= article.image %>" <% } %>>
+                                
+                                
+                                <% if(article.image){ %>
+                                    
+                                    <p class="p-0 m-0 mt-2">Imagem atual:</p>
+                                    <img id="actual-image" src="/tmp/<%= article.image %>" style="max-width: 200px;" class="img-fluid" alt="Imagem de capa atual"> 
+                                <% } %>
                             </div>
                             
                             <label class="mt-2" for="articlebody">Conteúdo:</label>
