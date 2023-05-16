@@ -82,6 +82,7 @@ app.get("/:slug", (req, res)=>{
     })
 });
 
+//TODO filtro de categoria com paginação
 app.get("/category/:slug", (req, res)=>{
 
     var slug = req.params.slug;

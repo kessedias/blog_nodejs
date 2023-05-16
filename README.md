@@ -18,6 +18,7 @@
 - Paginação 🕐
 - Tela de Login 🕐
 - Logout do sistema 🕐
+- Bug fixes 🕐⚠️
 > Em progresso...
 
 <img src="public/images/description.gif">
