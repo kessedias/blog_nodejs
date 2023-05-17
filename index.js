@@ -3,8 +3,9 @@ const app = express();
 const bodyParser = require("body-parser");
 const connection = require("./database/database");
 
-const categoriesController = require("./categories/categoriesController")
-const articlesController = require("./articles/articlesController")
+const categoriesController = require("./categories/categoriesController");
+const articlesController = require("./articles/articlesController");
+const usersController = require("./users/UsersController");
 
 //models
 const Article = require('./articles/Article');
@@ -51,6 +52,7 @@ connection
 
 app.use("/", categoriesController);
 app.use("/", articlesController);
+app.use("/", usersController);
 
 app.use(bodyParser.json());
 
