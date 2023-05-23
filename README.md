@@ -13,6 +13,7 @@
 ## Alterações 🧑‍💼
 - CRUD de categorias ✔️
 - CRUD de Artigos ✔️
+- CRUD de Usuários 🕐
 - Exibição do artigo ✔️
 - Refatoração artigo ✔️
 - Paginação 🕐
