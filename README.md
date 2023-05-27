@@ -16,7 +16,7 @@
 - CRUD de Usuários 🕐
 - Exibição do artigo ✔️
 - Refatoração artigo ✔️
-- Paginação 🕐
+- Paginação ✔️
 - Tela de Login 🕐
 - Logout do sistema 🕐
 - Bug fixes 🕐⚠️
