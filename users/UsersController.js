@@ -21,22 +21,38 @@ router.post("/users/create", (req, res)=>{
     var email = req.body.email;
     var password = req.body.password;
 
-    var salt = bcrypt.genSaltSync(10);
-    var hash = bcrypt.hashSync(password, salt);
+    User.findOne({
+        where:{
+            email: email
+        }
+    }).then( user =>{
 
-    User.create({
+        if(user == undefined){
 
-        email: email,
-        password: hash
+            var salt = bcrypt.genSaltSync(10);
+            var hash = bcrypt.hashSync(password, salt);
 
-    }).then(() => {
+            User.create({
 
-        res.redirect("/");
+                email: email,
+                password: hash
 
-    }).catch((err) => {
+            }).then(() => {
 
-        res.redirect("/");
-    });
+                res.redirect("/");
+
+            }).catch((err) => {
+
+                res.redirect("/");
+            });
+            
+        }else{
+
+            res.redirect('/admin/users/create');
+        }
+    })
+
+    
 });
 
 module.exports = router;
